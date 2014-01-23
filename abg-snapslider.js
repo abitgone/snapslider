@@ -185,7 +185,7 @@
 
         //  Add the Page List to the slider
         this.$pagelistItems = $pagelist.find("." + pagelistPagerClass);
-        this.$element.append($pagelistContainer);
+        this.$slider.parent().append($pagelistContainer);
 
         //  Highlight the displayed (active) pages
         this.setPagelistItemVisibility();
