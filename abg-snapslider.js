@@ -156,7 +156,7 @@
         //  Add the pagers to the pager container, and then add the pager container to the slider
         pagerDiv.appendChild(pagerPrev);
         pagerDiv.appendChild(pagerNext);
-        this.element.appendChild(pagerDiv);
+        this.slider.parentNode.appendChild(pagerDiv);
 
         //  Set the visibility of the pagination links
         this.setPaginationVisibility();
