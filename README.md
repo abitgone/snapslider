@@ -35,7 +35,7 @@ SnapSlider is configured through the use of data attributes. Simply apply these 
 You can use the following options to change the behaviour of SnapSlider:
 
 Data Attribute                    | Description
-----------------------------------|----------------------------------------------------------------------------
+:---------------------------------|:---------------------------------------------------------------------------
 `data-ss-enable-pagination`       | Set to `false` to disable pagination.
 `data-ss-enable-pagelist`         | Set to `false` to disable the page list at the bottom of the slider.
 `data-ss-enable-zoom`             | Set to `true` to enable the experimental zoom features.
@@ -45,7 +45,7 @@ Data Attribute                    | Description
 The zoom and zoom-to-page features are largely experimental and may not function as you require. Pull requests around the zoom functionality are welcomed.
 
 Data Attribute                    | Default Value | Description
-----------------------------------|---------------|------------------------------------------------------------
+:---------------------------------|:--------------|:-----------------------------------------------------------
 `data-ss-anim-duration`           | 250 (ms)      | Duration of the snap/paging animation
 `data-ss-scroll-delay`            | 250 (ms)      | Delay between scroll finishing and the snap event firing
 `data-ss-resize-delay`            | 100 (ms)      | Delay between resize finishing and the snap event firing
@@ -53,13 +53,15 @@ Data Attribute                    | Default Value | Description
 SnapSlider applies classnames to the target element when it is activated. You can change the default values by using the following data-attributes:
 
 Data Attribute                    | Default Value
-----------------------------------|----------------------------------------------------------------------------
+:---------------------------------|:---------------------------------------------------------------------------
 `data-ss-activated`               | `ss--active`
 `data-ss-pagination-activated`    | `ss--pagination-active`
 `data-ss-pagelist-activated`      | `ss--pagelist-active`
 `data-ss-zoom-activated`          | `ss--zoom-active`
 
 By default, SnapSlider uses `&lsaquo;` and `&rsaquo;` for the page controls. These can be overridden by using `data-ss-pager-prev-html` and `data-ss-pager-next-html`.
+
+To use an external list of page links, you can use `data-ss-pagelinks-selector` to provide a selector. SnapSlider will then use the selector to find elements within the `[data-snapslider]` element which match. The number of items matched must be the same as the number of items in the slider. See the [example page][example] for an example of how this feature can be used.
 
 If you wish to configure other aspects of SnapSlider, take a look at the `SnapSlider.DEFAULTS` object in [abg-snapslider.js][js].
 
