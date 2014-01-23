@@ -60,6 +60,7 @@
         ssActivated             : "ss--active",              // data-ss-activated
         ssPaginationActivated   : "ss--pagination-active",   // data-ss-pagination-activated
         ssPagelistActivated     : "ss--pagelist-active",     // data-ss-pagelist-activated
+        ssPagelinksActivated    : "ss--pagelinks-active",    // data-ss-pagelinks-activated
         ssZoomActivated         : "ss--zoom-active",         // data-ss-zoom-activated
         ssBaseClass             : "gallery",                 // data-ss-base-class
         ssElementSeparator      : "__",                      // data-ss-element-separator
@@ -72,6 +73,8 @@
         ssPagelistClass         : "pagelist",                // data-ss-pagelist-class
         ssPagelistListElement   : "ul",                      // data-ss-pagelist-list-element
         ssPagelistItemElement   : "li",                      // data-ss-pagelist-item-element
+        ssPagelinksSelector     : "",                        // data-ss-pagelinks-selector
+        ssPagelinkClass         : "pagelink",                // data-ss-pagelink-class
         ssPagerContainerElement : "div",                     // data-ss-pager-container-element
         ssPagerElement          : "a",                       // data-ss-pager-element
         ssPagerInnerElement     : "span",                    // data-ss-pager-inner-element
@@ -103,6 +106,7 @@
         //  Initialise optional features
         this.options.ssEnablePagination          && this.enablePagination();
         this.options.ssEnablePagelist            && this.enablePagelist();
+        this.options.ssPagelinksSelector         && this.enablePagelinks();
         this.options.ssEnableZoom                && this.enableZoom();
         !this.options.ssDisableKeyboardEvents    && this.enableKeyboardEvents();
 
@@ -197,6 +201,40 @@
 
         //  Mark the pagelist as activated on the slider by adding a class
         this.$element.addClass(this.options.ssPagelistActivated);
+    }
+
+    SnapSlider.prototype.enablePagelinks = function () {
+        //  Get the pagelinks collection
+        this.$pagelinks = this.$element.find(this.options.ssPagelinksSelector);
+
+        if (this.$pagelinks.length == 0) {
+            console && console.warn && console.warn("SnapSlider couldn't find any page links matching selector \"" + this.options.ssPagelinksSelector + "\". Pagelinks have not been enabled.");
+            return;
+        }
+        if (this.$pagelinks.length != this.sliderItemCount) {
+            console && console.warn && console.warn("SnapSlider found " + this.$pagelinks.length + " page links matching selector \"" + this.options.ssPagelinksSelector + "\", but expected " + this.sliderItemCount + ". Pagelinks have not been enabled.");
+            return;
+        }
+
+        //  Enhance the page link with a click 
+        for (var i = 0; i < this.sliderItemCount; i++) {
+            $(this.$pagelinks[i]).on("click", function (e) { e.preventDefault(); });
+            $(this.$pagelinks[i]).on("click", $.proxy(this.goToPage, this, i));
+        }
+
+        //  Set the classname we'll use to mark active pagelinks
+        this.sliderPagelinkClass          = this.options.ssBaseClass + this.options.ssElementSeparator + this.options.ssPagelinkClass;   
+        this.sliderPagelinkActiveClass    = this.sliderPagelinkClass + this.options.ssModifierSeparator + this.options.ssPagerActiveModifier;
+
+        //  Mark the pagelinks feature as enabled
+        this.sliderPagelinksEnabled = true;
+
+        //  Highlight the active page in the pagelinks
+        this.setPagelinksActiveItem();
+
+        //  Mark PageLinks as activated on the slider by adding classnames to the relevant items
+        this.$pagelinks.addClass(this.sliderPagelinkClass);
+        this.$element.addClass(this.options.ssPagelinksActivated);
     }
 
     SnapSlider.prototype.enableZoom = function () {
@@ -324,6 +362,11 @@
         }
     }
 
+    SnapSlider.prototype.setPagelinksActiveItem = function () {
+        this.$pagelinks.removeClass(this.sliderPagelinkActiveClass);
+        $(this.$pagelinks[this.sliderItemIndex]).addClass(this.sliderPagelinkActiveClass);
+    }
+
 
     // Actions
     // -------
@@ -334,8 +377,9 @@
 
         //  If there is no excess, we've already snapped, so there's nothing else to do
         if (this.sliderScrollExcess == 0) {
-            this.options.ssEnablePagination && this.setPaginationVisibility();
-            this.options.ssEnablePagelist   && this.setPagelistItemVisibility();
+            this.options.ssEnablePagination  && this.setPaginationVisibility();
+            this.options.ssEnablePagelist    && this.setPagelistItemVisibility();
+            this.sliderPagelinksEnabled      && this.setPagelinksActiveItem();
             return;
         }
 
@@ -359,6 +403,7 @@
         this.animate();
         this.options.ssEnablePagination && this.setPaginationVisibility();
         this.options.ssEnablePagelist   && this.setPagelistItemVisibility();
+        this.sliderPagelinksEnabled     && this.setPagelinksActiveItem();
     }
 
     SnapSlider.prototype.animate = function () {
@@ -375,6 +420,7 @@
         this.animate();
         this.options.ssEnablePagination && this.setPaginationVisibility();
         this.options.ssEnablePagelist   && this.setPagelistItemVisibility();
+        this.sliderPagelinksEnabled     && this.setPagelinksActiveItem();
     }
 
     SnapSlider.prototype.zoom = function (itemIndex) {       
