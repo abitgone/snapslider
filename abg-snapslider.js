@@ -194,6 +194,9 @@
 
         //  Highlight the displayed (active) pages
         this.setPagelistItemVisibility();
+
+        //  Mark the pagelist as activated on the slider by adding a class
+        this.$element.addClass(this.options.ssPagelistActivated);
     }
 
     SnapSlider.prototype.enableZoom = function () {
