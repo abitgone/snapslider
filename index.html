@@ -119,6 +119,96 @@
         </div>
 
         <div class="container">
+            <h2>SnapSlider with existing links to pages</h2>
+            <p>This example shows how SnapSlider can be used with existing markup. In this particular case, SnapSlider can also enhance an existing list of links as a secondary page list. This is achieved by specifying a selector for the links. The selector must return the same number of items as there are pages in the slider, or SnapSlider will not use the list.</p>
+        </div>
+
+        <div class="gallery--thumbnav" data-snapslider data-ss-enable-pagelist="false" data-ss-pagelinks-selector=".gallery--thumbnav__thumbnails a">
+            <div class="gallery--thumbnav__slider-wrap">
+                <div class="gallery--thumbnav__slider" data-snapslider-slider>
+                    <div class="gallery--thumbnav__items">
+                        <div class="gallery--thumbnav__item" data-snapslider-item>
+                            <div class="gallery--thumbnav__image-wrapper">
+                                <img class="gallery--thumbnav__image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(http://lorempixel.com/1500/1000/?2-1)" />
+                            </div>
+                        </div>
+                        <div class="gallery--thumbnav__item" data-snapslider-item>
+                            <div class="gallery--thumbnav__image-wrapper">
+                                <img class="gallery--thumbnav__image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(http://lorempixel.com/1500/1000/?2-2)" />
+                            </div>
+                        </div>
+                        <div class="gallery--thumbnav__item" data-snapslider-item>
+                            <div class="gallery--thumbnav__image-wrapper">
+                                <img class="gallery--thumbnav__image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(http://lorempixel.com/1500/1000/?2-3)" />
+                            </div>
+                        </div>
+                        <div class="gallery--thumbnav__item" data-snapslider-item>
+                            <div class="gallery--thumbnav__image-wrapper">
+                                <img class="gallery--thumbnav__image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(http://lorempixel.com/1500/1000/?2-4)" />
+                            </div>
+                        </div>
+                        <div class="gallery--thumbnav__item" data-snapslider-item>
+                            <div class="gallery--thumbnav__image-wrapper">
+                                <img class="gallery--thumbnav__image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(http://lorempixel.com/1500/1000/?2-5)" />
+                            </div>
+                        </div>
+                        <div class="gallery--thumbnav__item" data-snapslider-item>
+                            <div class="gallery--thumbnav__image-wrapper">
+                                <img class="gallery--thumbnav__image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(http://lorempixel.com/1500/1000/?2-6)" />
+                            </div>
+                        </div>
+                        <div class="gallery--thumbnav__item" data-snapslider-item>
+                            <div class="gallery--thumbnav__image-wrapper">
+                                <img class="gallery--thumbnav__image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(http://lorempixel.com/1500/1000/?2-7)" />
+                            </div>
+                        </div>
+                        <div class="gallery--thumbnav__item" data-snapslider-item>
+                            <div class="gallery--thumbnav__image-wrapper">
+                                <img class="gallery--thumbnav__image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(http://lorempixel.com/1500/1000/?2-8)" />
+                            </div>
+                        </div>
+                        <div class="gallery--thumbnav__item" data-snapslider-item>
+                            <div class="gallery--thumbnav__image-wrapper">
+                                <img class="gallery--thumbnav__image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(http://lorempixel.com/1500/1000/?2-9)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery--thumbnav__thumbnails">
+                <ul class="gallery--thumbnav__thumbnails--list">
+                    <li class="gallery--thumbnav__thumbnails--item">
+                        <a href="#ss-2-item1"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(http://lorempixel.com/1500/1000/?2-1)" /></a>
+                    </li>
+                    <li class="gallery--thumbnav__thumbnails--item">
+                        <a href="#ss-2-item2"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(http://lorempixel.com/1500/1000/?2-2)" /></a>
+                    </li>
+                    <li class="gallery--thumbnav__thumbnails--item">
+                        <a href="#ss-2-item3"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(http://lorempixel.com/1500/1000/?2-3)" /></a>
+                    </li>
+                    <li class="gallery--thumbnav__thumbnails--item">
+                        <a href="#ss-2-item4"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(http://lorempixel.com/1500/1000/?2-4)" /></a>
+                    </li>
+                    <li class="gallery--thumbnav__thumbnails--item">
+                        <a href="#ss-2-item5"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(http://lorempixel.com/1500/1000/?2-5)" /></a>
+                    </li>
+                    <li class="gallery--thumbnav__thumbnails--item">
+                        <a href="#ss-2-item6"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(http://lorempixel.com/1500/1000/?2-6)" /></a>
+                    </li>
+                    <li class="gallery--thumbnav__thumbnails--item">
+                        <a href="#ss-2-item7"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(http://lorempixel.com/1500/1000/?2-7)" /></a>
+                    </li>
+                    <li class="gallery--thumbnav__thumbnails--item">
+                        <a href="#ss-2-item8"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(http://lorempixel.com/1500/1000/?2-8)" /></a>
+                    </li>
+                    <li class="gallery--thumbnav__thumbnails--item">
+                        <a href="#ss-2-item9"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(http://lorempixel.com/1500/1000/?2-9)" /></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container">
             <p>The example <a href="https://github.com/abitgone/snapslider/blob/gh-pages/index.html">HTML</a> and the <a href="https://github.com/abitgone/snapslider/blob/gh-pages/snapslider.css">CSS</a> required can be found in the <a href="https://github.com/abitgone/snapslider/tree/gh-pages">gh-pages branch</a> on GitHub.</p>
             <hr />
             <p><a href="https://github.com/abitgone/snapslider">SnapSlider</a> is made available to you under the <a href="http://abitgone.mit-license.org/2014">MIT License</a>.</p>
