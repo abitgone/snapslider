@@ -61,6 +61,8 @@ Data Attribute                    | Default Value
 
 By default, SnapSlider uses `&lsaquo;` and `&rsaquo;` for the page controls. These can be overridden by using `data-ss-pager-prev-html` and `data-ss-pager-next-html`.
 
+To use an external list of page links, you can use `data-ss-pagelinks-selector` to provide a selector. SnapSlider will then use the selector to find elements within the `[data-snapslider]` element which match. The number of items matched must be the same as the number of items in the slider. See the [example page][example] for an example of how this feature can be used.
+
 If you wish to configure other aspects of SnapSlider, take a look at the `SnapSlider.DEFAULTS` object in [abg-snapslider.js][js].
 
 [js]: /abg-snapslider.js
