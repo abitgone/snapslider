@@ -26,6 +26,11 @@
         this.slider                 = this.$slider[0];
         this.options                = options;
 
+        if (!this.slider) {
+            console && console.warn && console.warn("SnapSlider could not find a [data-snapslider-slider] and has not been enabled.");
+            return;
+        }
+
         this.sliderWidth            = 
         this.sliderItemCount        = 
         this.sliderItemIndex        = 
