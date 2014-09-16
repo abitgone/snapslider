@@ -384,11 +384,19 @@
             //  itemVisible   |    largest     |    large
             //  !itemVisible  |    large       |    normal
 
-            var item = $(this.$sliderItems[i]).find("[data-snapslider-bg]");
+            var item = $(this.$sliderItems[i]).find("[data-snapslider-bg]"),
                 itemVisible = (i >= this.sliderItemIndex && i < (this.sliderItemIndex + this.sliderItemsShown));
+
+            if (item.length == 0) {
+                if ($(this.$sliderItems[i]).is("[data-snapslider-bg]")) {
+                    item = $(this.$sliderItems[i]);
+                }
+                else {
+                    continue;
+                }
+            }
             
             var itemState;
-
             if (this.sliderZoomed) {
                 itemState = itemVisible ? this.options.ssBgLargest : this.options.ssBgLarge;
             }
