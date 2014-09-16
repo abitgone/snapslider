@@ -85,7 +85,10 @@
         ssAnimDuration          : 250,                       // data-ss-anim-duration
         ssScrollDelay           : 250,                       // data-ss-scroll-delay
         ssResizeDelay           : 100,                       // data-ss-resize-delay
-        ssSnapTolerance         : 0.1                        // data-ss-snap-tolerance
+        ssSnapTolerance         : 0.1,                       // data-ss-snap-tolerance
+        ssBgNormal              : "",                        // data-ss-bg-normal
+        ssBgLarge               : "",                        // data-ss-bg-large
+        ssBgLargest             : ""                         // data-ss-bg-largest
     }
 
 
@@ -97,6 +100,9 @@
         this.sliderItemCount        = this.$sliderItems.length;
         this.sliderScrollLeft       = this.slider.scrollLeft;
         this.sliderScrollDirection  = 0;
+        this.sliderImageManagement  = this.options.ssBgNormal && 
+                                      this.options.ssBgLarge && 
+                                      this.options.ssBgLargest;
 
         this.setItemWidth();
 
@@ -109,6 +115,7 @@
         this.options.ssPagelinksSelector         && this.enablePagelinks();
         this.options.ssEnableZoom                && this.enableZoom();
         !this.options.ssDisableKeyboardEvents    && this.enableKeyboardEvents();
+        this.sliderImageManagement               && this.setBackgroundImages();
 
         //  Snap the slider
         this.snap();
@@ -362,6 +369,37 @@
         }
     }
 
+    SnapSlider.prototype.setBackgroundImages = function () {
+
+        var re = new RegExp(this.options.ssBgNormal + "|" + this.options.ssBgLarge + "|" + this.options.ssBgLargest, "ig");
+
+        for (var i = 0; i < this.sliderItemCount; i++) {
+            //  Snapslider will let you try to manage large numbers of image on memory-constrained 
+            //  devices by specifying files with normal, large and largest variants. The normal file
+            //  name as used in an item's backrgound image will be replaced with the large and 
+            //  largest versions depending on the following criteria:
+            //  
+            //                |  sliderZoomed  |  !sliderZoomed
+            //  --------------+----------------+-----------------
+            //  itemVisible   |    largest     |    large
+            //  !itemVisible  |    large       |    normal
+
+            var item = $(this.$sliderItems[i]).find("[data-snapslider-bg]");
+                itemVisible = (i >= this.sliderItemIndex && i < (this.sliderItemIndex + this.sliderItemsShown));
+            
+            var itemState;
+
+            if (this.sliderZoomed) {
+                itemState = itemVisible ? this.options.ssBgLargest : this.options.ssBgLarge;
+            }
+            else {
+                itemState = itemVisible ? this.options.ssBgLarge : this.options.ssBgNormal;
+            }
+
+            item[0].style.backgroundImage = item[0].style.backgroundImage.replace(re, itemState);
+        }
+    }
+
     SnapSlider.prototype.setPagelinksActiveItem = function () {
         this.$pagelinks.removeClass(this.sliderPagelinkActiveClass);
         $(this.$pagelinks[this.sliderItemIndex]).addClass(this.sliderPagelinkActiveClass);
@@ -377,6 +415,7 @@
 
         //  If there is no excess, we've already snapped, so there's nothing else to do
         if (this.sliderScrollExcess == 0) {
+            this.sliderImageManagement      && this.setBackgroundImages();
             this.options.ssEnablePagination  && this.setPaginationVisibility();
             this.options.ssEnablePagelist    && this.setPagelistItemVisibility();
             this.sliderPagelinksEnabled      && this.setPagelinksActiveItem();
@@ -401,6 +440,7 @@
 
         this.sliderItemIndex = targetItemIndex;
         this.animate();
+        this.sliderImageManagement      && this.setBackgroundImages();
         this.options.ssEnablePagination && this.setPaginationVisibility();
         this.options.ssEnablePagelist   && this.setPagelistItemVisibility();
         this.sliderPagelinksEnabled     && this.setPagelinksActiveItem();
@@ -418,6 +458,7 @@
     SnapSlider.prototype.goToPage = function (itemIndex) {
         this.sliderItemIndex = Math.max(0, Math.min(this.sliderItemCount - this.sliderItemsShown, itemIndex));
         this.animate();
+        this.sliderImageManagement      && this.setBackgroundImages();
         this.options.ssEnablePagination && this.setPaginationVisibility();
         this.options.ssEnablePagelist   && this.setPagelistItemVisibility();
         this.sliderPagelinksEnabled     && this.setPagelinksActiveItem();
