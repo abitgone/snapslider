@@ -14,7 +14,11 @@
             <p>View the code, fork the repository or file an issue on <a href="https://github.com/abitgone/snapslider">GitHub</a>.</p>
             <hr />
             <p>SnapSlider enhances a scrolling gallery of images, videos or other content with the ability to snap to the nearest element boundary. SnapSlider also allows for paging, page lists and zooming.</p>
-            <p>An example is shown below:</p>
+            <p>Examples below:
+                <a href="#basic_example">Basic Example</a>, 
+                <a href="#existing_links">Existing Links</a> and
+                <a href="#multiple_sources">Multiple Sources</a>
+            </p>
         </div>
         <style>
             /* 
@@ -61,7 +65,7 @@
             .gallery--zoom .gallery__items { width: 900%; }
         </style>
 
-        <div class="container">
+        <div class="container" id="basic_example">
             <h2>Basic Snapslider</h2>
             <p>This is a basic use of SnapSlider on a gallery of 9 items.</p>
         </div>
@@ -118,7 +122,7 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container" id="existing_links">
             <h2>SnapSlider with existing links to pages</h2>
             <p>This example shows how SnapSlider can be used with existing markup. In this particular case, SnapSlider can also enhance an existing list of links as a secondary page list. This is achieved by specifying a selector for the links. The selector must return the same number of items as there are pages in the slider, or SnapSlider will not use the list.</p>
         </div>
@@ -205,6 +209,65 @@
                         <a href="#ss-2-item9"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(http://lorempixel.com/1500/1000/?2-9)" /></a>
                     </li>
                 </ul>
+            </div>
+        </div>
+
+        <div class="container" id="multiple_sources">
+            <h2>Multiple Source SnapSlider</h2>
+            <p>This example shows how SnapSlider can use three sets of images per element &ndash; normal, large and largest &ndash; to allow for a &lsquo;lazy-loading&rsquo; style of loading images. Currently this only works if you're using background images for your SnapSlider element and should be considered a &lsquo;beta&rsquo; feature.</p>
+            <p>You&rsquo;ll need to add three strings to your SnapSlider element using the data attributes <code>data-ss-bg-normal</code>, <code>data-ss-bg-large</code> and <code>data-ss-bg-largest</code>. These patterns are used to replace parts of the filename. In the example shown, I&rsquo;ve used <code>.jpg</code>, <code>-large.jpg</code> and <code>-largest.jpg</code> respectively (which works when all your files are called <code>img1.jpg</code>, <code>img1-large.jpg</code> and <code>img1-largest.jpg</code>) but you can use folder names, prefixes or other methods if you prefer.</p>
+            <p>Finally, you&rsquo;ll need to add the data attribute <code>data-snapslider-bg</code> to the element you set your background image on.</p>
+        </div>
+        
+        <div class="gallery" data-snapslider data-ss-enable-zoom="true" data-ss-bg-normal=".jpg" data-ss-bg-large="-large.jpg" data-ss-bg-largest="-largest.jpg" data-x-ss-enable-zoomtopage="true">
+            <div class="gallery__slider" data-snapslider-slider>
+                <div class="gallery__items">
+                    <div class="gallery__item" data-snapslider-item>
+                        <div class="gallery__image-wrapper">
+                            <img class="gallery__image" data-snapslider-bg src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(img/img_1.jpg)" />
+                        </div>
+                    </div>
+                    <div class="gallery__item" data-snapslider-item>
+                        <div class="gallery__image-wrapper">
+                            <img class="gallery__image" data-snapslider-bg src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(img/img_2.jpg)" />
+                        </div>
+                    </div>
+                    <div class="gallery__item" data-snapslider-item>
+                        <div class="gallery__image-wrapper">
+                            <img class="gallery__image" data-snapslider-bg src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(img/img_3.jpg)" />
+                        </div>
+                    </div>
+                    <div class="gallery__item" data-snapslider-item>
+                        <div class="gallery__image-wrapper">
+                            <img class="gallery__image" data-snapslider-bg src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(img/img_4.jpg)" />
+                        </div>
+                    </div>
+                    <div class="gallery__item" data-snapslider-item>
+                        <div class="gallery__image-wrapper">
+                            <img class="gallery__image" data-snapslider-bg src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(img/img_5.jpg)" />
+                        </div>
+                    </div>
+                    <div class="gallery__item" data-snapslider-item>
+                        <div class="gallery__image-wrapper">
+                            <img class="gallery__image" data-snapslider-bg src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(img/img_6.jpg)" />
+                        </div>
+                    </div>
+                    <div class="gallery__item" data-snapslider-item>
+                        <div class="gallery__image-wrapper">
+                            <img class="gallery__image" data-snapslider-bg src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(img/img_7.jpg)" />
+                        </div>
+                    </div>
+                    <div class="gallery__item" data-snapslider-item>
+                        <div class="gallery__image-wrapper">
+                            <img class="gallery__image" data-snapslider-bg src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(img/img_8.jpg)" />
+                        </div>
+                    </div>
+                    <div class="gallery__item" data-snapslider-item>
+                        <div class="gallery__image-wrapper">
+                            <img class="gallery__image" data-snapslider-bg src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="background-image: url(img/img_9.jpg)" />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
